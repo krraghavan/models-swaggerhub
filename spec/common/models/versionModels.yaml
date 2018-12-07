@@ -2,13 +2,8 @@
 
 ### Examples...
 
-info:
-  description: "Nutanix DTO Models"
-  version: '3.1'
-  title: Nutanix DTO Models
-
 components:
-  schemas: :
+  schemas:
     ErrorModel:
       required:
         - "code"
@@ -44,7 +39,7 @@ components:
         modules:
           type: array
           items:
-            $ref: '#/definitions/ModuleEntry'
+            $ref: '#/components/schemas/ModuleEntry'
     ModuleEntry:
       properties:
         name:
