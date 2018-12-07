@@ -2,10 +2,10 @@ openapi: 3.0.0
 # Added by API Auto Mocking Plugin
 servers:
   - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/NutanixEngineering/Unversioned/1.0.0
+    url: https://virtserver.swaggerhub.com/NutanixEngineering/Unversioned/1.0
 info:
   description: Unversioned Nutanix APIs 
-  version: "1.0.0"
+  version: "1.0"
   title: Unversioned Nutanix APIs
   contact:
     email: api@nutanix.com
@@ -22,7 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Manifest'
-            
+
+# Model definitions            
 components:
   schemas:
     ManifestEntry:
