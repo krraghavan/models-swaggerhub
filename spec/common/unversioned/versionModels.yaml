@@ -57,6 +57,8 @@ components:
         name:
           type: "string"
     Manifest:
-      type: array
-      items:
-        $ref: '#/components/schemas/ManifestEntry'
+      properties:
+        entries: 
+          type: array
+          items:
+            $ref: '#/components/schemas/ManifestEntry'
