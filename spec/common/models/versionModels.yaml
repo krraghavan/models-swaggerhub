@@ -1,0 +1,73 @@
+### Domains, a place to put your reusable components
+
+### Examples...
+
+info:
+  description: "Nutanix DTO Models"
+  version: '3.1'
+  title: Nutanix DTO Models 
+
+
+definitions:
+  ErrorModel:
+    required:
+      - "code"
+      - "message"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+  ManifestEntry:
+    required:
+      - "name"
+      - "currentVersion"
+      - "supportedVersions"
+      - "deprecatedVersions"
+      - "modules"
+    properties:
+      name:
+        type: "string"
+        readOnly: true
+      currentVersion:
+        type: "string"
+        readOnly: true
+      supportedVersions:
+        type: array
+        items:
+          type: string
+      deprecatedVersions:
+        type: array
+        items:
+          type: string
+      modules:
+        type: array
+        items:
+          $ref: '#/definitions/ModuleEntry'
+  ModuleEntry:
+    properties:
+      name:
+        type: "string"
+  
+  # responses:
+  # GeneralError:
+  #   description: General Error
+  #   schema:
+  #     $ref: '#/definitions/ErrorModel'
+
+# parameters:
+  # skipParam:
+  #   name: "skip"
+  #   in: "query"
+  #   description: "number of items to skip"
+  #   type: "integer"
+
+# pathitems:
+  # EntityOperations:
+  #   get:
+  #     description: "Returns a pet based on ID"
+  #     summary: "Find pet by ID"
+  #     responses:
+  #       default:
+  #         $ref: '#/responses/GeneralError'
