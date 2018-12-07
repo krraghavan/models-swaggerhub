@@ -1,19 +1,31 @@
-### Domains, a place to put your reusable components
-
-### Examples...
-
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/NutanixEngineering/Unversioned/1.0.0
+info:
+  description: Unversioned Nutanix APIs 
+  version: "1.0.0"
+  title: Unversioned Nutanix APIs
+  contact:
+    email: api@nutanix.com
+paths:
+  /versions:
+    get: 
+      description: >
+        Returns the manifest of versions supported by this server.  Versions are specific to
+        each namespace- it does not make sense to talk about version in a global sense.
+      responses:
+        '200':
+          description: The list of manifest entries 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manifest'
+            
+             
 components:
   schemas:
-    ErrorModel:
-      required:
-        - "code"
-        - "message"
-      properties:
-        code:
-          type: "integer"
-          format: "int32"
-        message:
-          type: "string"
     ManifestEntry:
       required:
         - "name"
@@ -44,25 +56,7 @@ components:
       properties:
         name:
           type: "string"
-    
-  # responses:
-  # GeneralError:
-  #   description: General Error
-  #   schema:
-  #     $ref: '#/schemes/ErrorModel'
-
-# parameters:
-  # skipParam:
-  #   name: "skip"
-  #   in: "query"
-  #   description: "number of items to skip"
-  #   type: "integer"
-
-# pathitems:
-  # EntityOperations:
-  #   get:
-  #     description: "Returns a pet based on ID"
-  #     summary: "Find pet by ID"
-  #     responses:
-  #       default:
-  #         $ref: '#/responses/GeneralError'
+    Manifest:
+      type: array
+      items:
+        $ref: '#/components/schemas/ManifestEntry'
