@@ -1,0 +1,61 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/NutanixEngineering/Unversioned/1.0.0
+info:
+  description: Unversioned Nutanix APIs 
+  version: "1.0.0"
+  title: Unversioned Nutanix APIs
+  contact:
+    email: api@nutanix.com
+paths:
+  /versions:
+    get: 
+      description: >
+        Returns the manifest of versions supported by this server.  Versions are specific to
+        each namespace- it does not make sense to talk about version in a global sense.
+      responses:
+        '200':
+          description: The list of manifest entries 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manifest'
+            
+components:
+  schemas:
+    ManifestEntry:
+      required:
+        - "name"
+        - "currentVersion"
+        - "supportedVersions"
+        - "deprecatedVersions"
+        - "modules"
+      properties:
+        name:
+          type: "string"
+          readOnly: true
+        currentVersion:
+          type: "string"
+          readOnly: true
+        supportedVersions:
+          type: array
+          items:
+            type: string
+        deprecatedVersions:
+          type: array
+          items:
+            type: string
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModuleEntry'
+    ModuleEntry:
+      properties:
+        name:
+          type: "string"
+    Manifest:
+      type: array
+      items:
+        $ref: '#/components/schemas/ManifestEntry'
